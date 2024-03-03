@@ -1,0 +1,35 @@
+generator client {
+  provider      = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Rating {
+  id            Int       @id(map: "ratings_pk") @default(autoincrement())
+  url           String
+  resource_type String    @db.VarChar(20)
+  tag           String    @db.VarChar(20)
+  shows         Int
+  likes         Int
+  dislikes      Int
+  is_visible    Boolean
+  raw_tags      String
+  created_at    DateTime? @db.Timestamp(6)
+  updated_at    DateTime? @db.Timestamp(6)
+
+  @@map("ratings")
+}
+
+model User {
+  id         Int       @id(map: "users_pk") @default(autoincrement())
+  login      String    @db.VarChar(100)
+  password   String    @db.VarChar(100)
+  is_admin   Boolean   @default(false) @db.Boolean()
+  created_at DateTime  @default(now())
+  updated_at DateTime? @db.Timestamp(6)
+
+  @@map("users")
+}

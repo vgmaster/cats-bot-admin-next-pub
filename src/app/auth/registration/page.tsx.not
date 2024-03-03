@@ -1,0 +1,10 @@
+import { RegistrationForm } from "@/features/registration";
+
+export default async function Registration(): Promise<JSX.Element> {
+  return (
+    <div className="flex flex-col gap-6">
+      <h1 className="text-3xl">Регистрация</h1>
+      <RegistrationForm buttonLabel="Зарегистрироваться" />
+    </div>
+  );
+}

@@ -1,0 +1,1 @@
+Cats boot admin NextJS
